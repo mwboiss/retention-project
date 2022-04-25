@@ -1,12 +1,12 @@
 # Innis-Retention-Project
 
-This repo is a compilation of work done to explore 
+This repo is a compilation of work done to explore Data from a Large College in the Western United States to identify drivers over retention.
 
 ## About the Project
 
 ### Project Goals
 
-The goal of this project is to 
+The goal of this project is to identify drivers of retention
 
 ### Project Description
 
@@ -34,31 +34,30 @@ The goal of this project is to
 
 ### Data Dictionary
 
-Variable | Meaning |
-:-: | :-- |
-FAKEID	Proxy student ID
-RETAINED	Y/N flag for whether a student was retained fall-fall or spring-spring
-ENROLLED_1_BACK	Y/N flag for whether a student was enrolled in the fall or spring semester in between the retained span
-RACE_ETHN	Race/ ethnicity
-SEX	Sex
-TIME_STATUS	Full or part time status based on credits attempted
-FGEN	First generation student status
-STUDENT_CLASSIF	Student Classification (freshmen, sophomore,etc)
-PELL_EVER	Whether or a not a student has ever been Pell grant eligible
-EFC	Expected Family Contribution (null where no FAFSA received)
-HS_GPA	High School GPA where available
-TERM_GPA	Term grade point average in base semester of retention calculation
-OriginalType	A student's original student type when beginning at the university
-CIP_2DIG	2 digit classification of instrucitonal program
-AGE_AT_START_TERM	Age at the start of the term for the base semester of the retention calculation
-ACT	ACT score bucket where available
-ASTD	Academic standing bucket (here grouped into good or issue bins)
-FA_RECD	Whether or a not a student received financial aid in the base semester of retention calculation.
-DEPEND_STATUS	Students' financial dependency status
-DUBYA_COUNT_TERM	Count of W grades received in base semester of retention calculation
-SPAN	Groupings of years between when a student began and the start date of the base semester of the retention calculation
-DAYS_BETWEEN	Number of days between when a student registered for the base semester of the retention calculation and that semester's start date. 
-
+|Column Name|Column Description|
+|:-:|:--|
+|id|Proxy student ID|
+|retained|Y/N flag for whether a student was retained fall-fall or spring-spring|
+|enrolled_between|Y/N flag for whether a student was enrolled in the fall or spring semester in between the retained span|
+|race_ethn|Race/ ethnicity|
+|sex|Sex|
+|time_status|Full or part time status based on credits attempted|
+|fgen|First generation student status|
+|student_year|Student Classification (freshmen, sophomore,etc)|
+|pell_ever|Whether or a not a student has ever been Pell grant eligible|
+|efc|Expected Family Contribution (null where no FAFSA received)|
+|hs_gpa|High School GPA where available|
+|term_gpa|Term grade point average in base semester of retention calculation|	
+|enroll_type|A student's original student type when beginning at the university|
+|cip|2 digit classification of instrucitonal program|
+|age_at_start_term|Age at the start of the term for the base semester of the retention calculation|
+|act|ACT score bucket where available|
+|academic_standing|Academic standing bucket (here grouped into good or issue bins)	|
+|fa_recd|Whether or a not a student received financial aid in the base semester of retention calculation|
+|depend_status|Students' financial dependency status|
+|w_count|Count of W grades received in base semester of retention calculation|
+|yr_since_start|Groupings of years between when a student began and the start date of the base semester of the retention calculation|
+|reg_before_start|Number of days between when a student registered for the base semester of the retention calculation and that semester's start date|
 
 ### Steps to Reproduce
 
