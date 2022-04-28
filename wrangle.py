@@ -55,6 +55,9 @@ def prep_student_data(df):
     # Merge the df's
     df = pd.merge(df,cip, on='cip', how='left')
     
+    # fix age at start term variables (23 - 29, to 23-29)
+    df['age_at_start_term'] = df.age_at_start_term.str.replace(' ','').str.replace('or','-')
+    
     # One hot encode categorical columns
     # Replace (1,0): retained, enrolled_between, sex, time_status, pell_ever, academic_standing, fa_recd, w_count
     df['retained'] = df.retained.str.replace('Y', '1').str.replace('N', '0')
@@ -72,6 +75,9 @@ def prep_student_data(df):
     dummy_name = pd.get_dummies(df[['race_ethn','fgen','student_year','enroll_type','title','age_at_start_term','act','depend_status','yrs_since_start']],dummy_na=False)
     # Combine df's
     df = pd.concat([df,dummy_name],axis=1)
+    
+    # Drop depend_status_unk, fgen_1Gx for quick dimensionailty reduction
+    df = df.drop(columns=['depend_status_unk','fgen_1GX'])
     
     # Return cleaned df
     return df
@@ -122,6 +128,6 @@ def model_split(df, target):
     
     # Assign x for testing the model, y as target for modeling
     X = df.drop(columns=[target])
-    y = df[[target]]
+    y = df[target]
     
     return X, y

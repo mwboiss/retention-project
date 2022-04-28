@@ -6,31 +6,31 @@ This repo is a compilation of work done to explore Data from a Large College in 
 
 ### Project Goals
 
-The goal of this project is to identify drivers of retention
+The goal of this project is to identify drivers of retention for a large University in the Western United States. 
 
 ### Project Description
 
+College continues to be a large expense for adults in America. Ensuring students have every oppurtunity to finish their education should be of upmost importance to every University. In this project I will explore possible drivers that can help Universities identify which students are at risk of not returning year over year.
 
 ### Initial Questions
 
-1) 
+1)  Does the students class status (Freshman, Sophmore,etc..) vs the years since a student started affect retention?
 
-2) 
+2)  Does whether a student was enrolled between the retention semester affect retention?
 
-3) 
+3) Does a students term gpa affect retention?
 
-4) 
+4) Does the students w_count affect retention?
 
-5) 
+5) Does a students full time or part time status affect retention?
 
 ### Summary of Findings
 
-- 
-- 
+- Through exploration and modeling whether a student was enrolled in the semester between the retention calculation and the base semester showed the most drastic retention difference. Freshman students showed a much lower retention then the other classes. Lastely term_gpa was much lower in students that were not retained.
 
 ### Project Report
 
-
+https://github.com/mwboiss/retention-project
 
 ### Data Dictionary
 
@@ -68,6 +68,8 @@ The goal of this project is to identify drivers of retention
 3. All files in the repo should be cloned to reproduce this project.
 
 4. Ensuring .gitignore is setup to protect env.py file data.
+
+5. CSV file must remain private for purposes of anonymity.
 
 ## Plan of Action
 
@@ -123,15 +125,15 @@ The goal of this project is to identify drivers of retention
 
 ###### Questions to Answer
 
-1) 
+1)  Does the students class status (Freshman, Sophmore,etc..) vs the years since a student started affect retention?
 
-2) 
+2)  Does whether a student was enrolled between the retention semester affect retention?
 
-3) 
+3) Does a students term gpa affect retention?
 
-4) 
+4) Does the students w_count affect retention?
 
-5) 
+5) Does a students full time or part time status affect retention?
 
 ###### Explore through visualizations
 
@@ -155,7 +157,7 @@ The goal of this project is to identify drivers of retention
 
 2) Evaluate a basline meteric used to compare models to the most present target variable
 
-3) Develop models to predict .
+3) Develop models to predict
 
 4) Fit the models to Train data
 
@@ -166,3 +168,25 @@ The goal of this project is to identify drivers of retention
 #### Report
 
 1) Create report ensuring well documented code and clear summary of findings as well as next steps to improve research
+
+#### Summary of Questions and Conclusions
+
+Question 1: Does the students class status (Freshman, Sophmore,etc..) vs the years since a student started affect retention?
+
+Question 1 Summary: Freshman by far have the lowest retention across the yrs. Juniors and Seniors have the highest. Further exploration could be done with enrollment type to see how first time students compare to transfer students. As well populations can be seperated by full time and part time status. 
+
+Question 2: Does whether a student was enrolled between the retention semester affect retention?
+
+Question 2 Summary: If a student was not enrolled between the retention semester it seems to be the biggest indicator that they will not be retained. According to the Chi^2 test mid semester enrollment is not independent of retention.
+
+Question 3: Does a students term gpa affect retention?
+
+Question 3 Summary: Term gpa seems to be a decent predictor. Bottom 75 % of students in the not retained category had a term_gpa less than the bottom 50 % of those retained. Also note for later analysis hs_gpa does not change with a student over time but term_gpa does.
+
+Qestion 4: Does the students w_count affect retention?
+
+Question 4 Summary: 70 percent of students did not have a w_count in the base semester of the retention calculation, out of those students the retention rate was higher than the average. The 30 percent of students with at least one withdraw had a much lower retention rate of 55 percent.
+
+Question 5: Does a students full time or part time status affect retention?
+
+Question 5 Summary: It does look as though full time students are more likely to be retained. The chi^2 test does show that there is a statistically significant relationship between time_status and retention.
