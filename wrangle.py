@@ -36,22 +36,25 @@ def get_cip_codes():
 
 # Create prep function
 def prep_student_data(df):
+    
     '''
     This function takes in the acquired dataframe and prepare the data for exploration.
     '''
+    
     # Lowercase all column names
     df.columns = [col.lower() for col in df]
+    
     # Change column names for ease of use
     df = df.rename(columns={'fakeid':'id','enrolled_1_back':'enrolled_between','student_classif':'student_year',\
                                     'originaltype':'enroll_type','cip_2dig':'cip','astd':'academic_standing',\
                                     'dubya_count_term':'w_count','span':'yrs_since_start','days_between':'reg_before_start'})
-    # Drop Nulls for initial pass
-    df = df.dropna()
     
     # Drop UN cip value
     df = df[df['cip'] != 'UN']
+    
     # Retrieve cip codes with descriptions and return dataframe
     cip = get_cip_codes()
+    
     # Merge the df's
     df = pd.merge(df,cip, on='cip', how='left')
     
@@ -68,19 +71,31 @@ def prep_student_data(df):
     df['academic_standing'] = df.academic_standing.str.replace('GOODBIN', '1').str.replace('ISSUEBIN', '0')
     df['fa_recd'] = df.fa_recd.str.replace('Y', '1').str.replace('N', '0')
     df['w_count'] = df.w_count.str.replace('ONE_OR_MORE', '1').str.replace('NONE', '0')
+    
     # Reassign as int type
     df[['retained','enrolled_between','sex','time_status','pell_ever','academic_standing','fa_recd','w_count']] = \
     df[['retained','enrolled_between','sex','time_status','pell_ever','academic_standing','fa_recd','w_count']].astype('int')
+    
     # Create dummies: race_ethn, fgen, student_year, enroll_type, cip, age_at_start_term, act, depend_status, yrs_since_start
-    dummy_name = pd.get_dummies(df[['race_ethn','fgen','student_year','enroll_type','title','age_at_start_term','act','depend_status','yrs_since_start']],dummy_na=False)
+    dummy_name = pd.get_dummies(df[['race_ethn','fgen','student_year','enroll_type','title','age_at_start_term','act',\
+                                    'depend_status','yrs_since_start']],dummy_na=False)
     # Combine df's
     df = pd.concat([df,dummy_name],axis=1)
     
-    # Drop depend_status_unk, fgen_1Gx for quick dimensionailty reduction
-    df = df.drop(columns=['depend_status_unk','fgen_1GX'])
+    # Leaving in to note that before hs_gpa and efc were dropped and all null values were dropped instead these columns only showed up as 1 to 5 values
+    # now they show up as over 100_000 so there is a relation to lack of data between efc, hs_gpa, depend_status, and fgen. 
+    # Could this part of the population be considered a subset for analysis. how are they related?
+#     # Drop depend_status_unk, fgen_1Gx, id for dimensionailty reduction
+#     df = df.drop(columns=['depend_status_unk','fgen_1GX'])
+    
+    # Drop hs_gpa and efc for initial pass
+    df = df.drop(columns=['hs_gpa','efc'])
+    
+    # Drop Nulls for initial pass
+    df = df.dropna()
     
     # Return cleaned df
-    return df
+    return df, dummy_name
 
 def split_data(df,target):
     '''
@@ -105,8 +120,8 @@ def scale_data(train, validate, test, return_scaler=False):
     If return_scaler is true, the scaler will be returned as well.
     '''
     
-    col = train.columns[train.dtypes == 'float']
-    col = col.append(train.columns[train.dtypes == 'int'])
+    # Add pack hs_gpa after impute
+    col = ['reg_before_start','term_gpa']
 
     train_scaled = train[col]
     validate_scaled = validate[col]

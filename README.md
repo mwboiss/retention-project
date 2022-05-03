@@ -30,7 +30,7 @@ College continues to be a large expense for adults in America. Ensuring students
 
 ### Project Report
 
-https://github.com/mwboiss/retention-project
+https://github.com/mwboiss/retention-project/blob/main/report.ipynb
 
 ### Data Dictionary
 
