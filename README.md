@@ -61,15 +61,13 @@ https://github.com/mwboiss/retention-project/blob/main/report.ipynb
 
 ### Steps to Reproduce
 
-1. A locally stored env.py file containing hostname, username and password for the mySQL database containing the zillow dataset is needed.
+1. Data Science Libraries needed: pandas, numpy, matplotlib.pyplot, seaborn, scipy.stats, sklearn
 
-2. Data Science Libraries needed: pandas, numpy, matplotlib.pyplot, seaborn, scipy.stats, sklearn
+2. All files in the repo should be cloned to reproduce this project.
 
-3. All files in the repo should be cloned to reproduce this project.
+3. Ensuring .gitignore is setup to protect env.py file data.
 
-4. Ensuring .gitignore is setup to protect env.py file data.
-
-5. CSV file must remain private for purposes of anonymity.
+4. CSV file must remain private for purposes of anonymity.
 
 ## Plan of Action
 
