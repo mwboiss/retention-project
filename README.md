@@ -1,6 +1,6 @@
 # Innis-Retention-Project
 
-This repo is a compilation of work done to explore Data from a Large College in the Western United States to identify drivers over retention.
+This repo is a compilation of work done to explore data from a large college in the western United States to identify drivers of retention and develop efficient classification models for predicting year over year retention.
 
 ## About the Project
 
@@ -10,19 +10,20 @@ The goal of this project is to identify drivers of retention for a large Univers
 
 ### Project Description
 
-College continues to be a large expense for adults in America. Ensuring students have every oppurtunity to finish their education should be of upmost importance to every University. In this project I will explore possible drivers that can help Universities identify which students are at risk of not returning year over year.
+College continues to be a large expense for adults in the United States. Ensuring students have every opportunity to finish their education should be of utmost importance to every University. In this project I will explore possible drivers that can help Universities identify which students are at risk of not being retained year over year. Student data will be explored and classification models will be assessed to identify which students the University should focus resources on to ensure they are equipped with what they need to finish their degrees and become thriving professionals.
+
 
 ### Initial Questions
 
-1)  Does the students class status (Freshman, Sophmore,etc..) vs the years since a student started affect retention?
+1) Does the student's class status (Freshman, Sophomore,etc..) vs the years since a student started affect retention?
 
-2)  Does whether a student was enrolled between the retention semester affect retention?
+2) Does whether a student was enrolled between the retention semester affect retention?
 
-3) Does a students term gpa affect retention?
+3) Does a student's term GPA affect retention?
 
-4) Does the students w_count affect retention?
+4) Does whether a student withdraw from a course affect retention?
 
-5) Does a students full time or part time status affect retention?
+5) Does a student's full time or part time status affect retention?
 
 ### Summary of Findings
 
@@ -37,7 +38,7 @@ https://github.com/mwboiss/retention-project/blob/main/report.ipynb
 |Column Name|Column Description|
 |:-:|:--|
 |id|Proxy student ID|
-|retained|Y/N flag for whether a student was retained fall-fall or spring-spring|
+|retained|Y/N flag for whether a student was retained fall-fall or spring-spring
 |enrolled_between|Y/N flag for whether a student was enrolled in the fall or spring semester in between the retained span|
 |race_ethn|Race/ ethnicity|
 |sex|Sex|
@@ -49,25 +50,21 @@ https://github.com/mwboiss/retention-project/blob/main/report.ipynb
 |hs_gpa|High School GPA where available|
 |term_gpa|Term grade point average in base semester of retention calculation|	
 |enroll_type|A student's original student type when beginning at the university|
-|cip|2 digit classification of instrucitonal program|
+|cip|2 digit classification of instructional program|
 |age_at_start_term|Age at the start of the term for the base semester of the retention calculation|
 |act|ACT score bucket where available|
 |academic_standing|Academic standing bucket (here grouped into good or issue bins)	|
 |fa_recd|Whether or a not a student received financial aid in the base semester of retention calculation|
 |depend_status|Students' financial dependency status|
-|w_count|Count of W grades received in base semester of retention calculation|
+|withdrawal|Whether a student received a W grade in the base semester of retention calculation|
 |yr_since_start|Groupings of years between when a student began and the start date of the base semester of the retention calculation|
 |reg_before_start|Number of days between when a student registered for the base semester of the retention calculation and that semester's start date|
+|base semester|The semester from which the data came. First fall/spring in fall to fall or spring to spring|
+
 
 ### Steps to Reproduce
 
-1. Data Science Libraries needed: pandas, numpy, matplotlib.pyplot, seaborn, scipy.stats, sklearn
-
-2. All files in the repo should be cloned to reproduce this project.
-
-3. Ensuring .gitignore is setup to protect env.py file data.
-
-4. CSV file must remain private for purposes of anonymity.
+1. Though the data has been changed to not expose students personal information the original CSV file must remain private for purposes of ananymity.
 
 ## Plan of Action
 
@@ -129,7 +126,7 @@ https://github.com/mwboiss/retention-project/blob/main/report.ipynb
 
 3) Does a students term gpa affect retention?
 
-4) Does the students w_count affect retention?
+4) Does whether a student withdraw from a course affect retention?
 
 5) Does a students full time or part time status affect retention?
 
@@ -149,6 +146,8 @@ https://github.com/mwboiss/retention-project/blob/main/report.ipynb
 
 1) Create a summary that answers exploritory questions
 
+#### Perform necessary feature engineering, and dimensionality reduction.
+
 #### Modeling
 
 1) Evaluate which metrics best answer each question
@@ -159,9 +158,11 @@ https://github.com/mwboiss/retention-project/blob/main/report.ipynb
 
 4) Fit the models to Train data
 
-5) Evaluate on Validate data to ensure no overfitting
+5) Assess models for hyperparameter tuning
 
-6) Evaluate top model on test data
+6) Evaluate on Validate data to ensure no overfitting
+
+7) Evaluate top model on test data
 
 #### Report
 
@@ -181,9 +182,9 @@ Question 3: Does a students term gpa affect retention?
 
 Question 3 Summary: Term gpa seems to be a decent predictor. Bottom 75 % of students in the not retained category had a term_gpa less than the bottom 50 % of those retained. Also note for later analysis hs_gpa does not change with a student over time but term_gpa does.
 
-Qestion 4: Does the students w_count affect retention?
+Qestion 4: Does whether a student withdraw from a course affect retention?
 
-Question 4 Summary: 70 percent of students did not have a w_count in the base semester of the retention calculation, out of those students the retention rate was higher than the average. The 30 percent of students with at least one withdraw had a much lower retention rate of 55 percent.
+Question 4 Summary: 70 percent of students did not have a withdrawal in the base semester of the retention calculation, out of those students the retention rate was higher than the average. The 30 percent of students with at least one withdrawal had a much lower retention rate of 55 percent.
 
 Question 5: Does a students full time or part time status affect retention?
 

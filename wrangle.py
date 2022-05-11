@@ -47,7 +47,7 @@ def prep_student_data(df):
     # Change column names for ease of use
     df = df.rename(columns={'fakeid':'id','enrolled_1_back':'enrolled_between','student_classif':'student_year',\
                                     'originaltype':'enroll_type','cip_2dig':'cip','astd':'academic_standing',\
-                                    'dubya_count_term':'w_count','span':'yrs_since_start','days_between':'reg_before_start'})
+                                    'dubya_count_term':'withdrawal','span':'yrs_since_start','days_between':'reg_before_start'})
     
     # Drop UN cip value
     df = df[df['cip'] != 'UN']
@@ -62,7 +62,7 @@ def prep_student_data(df):
     df['age_at_start_term'] = df.age_at_start_term.str.replace(' ','').str.replace('or','-')
     
     # One hot encode categorical columns
-    # Replace (1,0): retained, enrolled_between, sex, time_status, pell_ever, academic_standing, fa_recd, w_count
+    # Replace (1,0): retained, enrolled_between, sex, time_status, pell_ever, academic_standing, fa_recd, withdrawal
     df['retained'] = df.retained.str.replace('Y', '1').str.replace('N', '0')
     df['enrolled_between'] = df.enrolled_between.str.replace('Y', '1').str.replace('N', '0')
     df['sex'] = df.sex.str.replace('F', '1').str.replace('M', '0')
@@ -70,11 +70,11 @@ def prep_student_data(df):
     df['pell_ever'] = df.pell_ever.str.replace('Y', '1').str.replace('N', '0')
     df['academic_standing'] = df.academic_standing.str.replace('GOODBIN', '1').str.replace('ISSUEBIN', '0')
     df['fa_recd'] = df.fa_recd.str.replace('Y', '1').str.replace('N', '0')
-    df['w_count'] = df.w_count.str.replace('ONE_OR_MORE', '1').str.replace('NONE', '0')
+    df['withdrawal'] = df.withdrawal.str.replace('ONE_OR_MORE', '1').str.replace('NONE', '0')
     
     # Reassign as int type
-    df[['retained','enrolled_between','sex','time_status','pell_ever','academic_standing','fa_recd','w_count']] = \
-    df[['retained','enrolled_between','sex','time_status','pell_ever','academic_standing','fa_recd','w_count']].astype('int')
+    df[['retained','enrolled_between','sex','time_status','pell_ever','academic_standing','fa_recd','withdrawal']] = \
+    df[['retained','enrolled_between','sex','time_status','pell_ever','academic_standing','fa_recd','withdrawal']].astype('int')
     
     # Create dummies: race_ethn, fgen, student_year, enroll_type, cip, age_at_start_term, act, depend_status, yrs_since_start
     dummy_name = pd.get_dummies(df[['race_ethn','fgen','student_year','enroll_type','title','age_at_start_term','act',\
