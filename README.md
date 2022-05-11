@@ -110,41 +110,39 @@ https://github.com/mwboiss/retention-project/blob/main/report.ipynb
 
 2) Add code to prepare function and test in notebook
 
-##### Explore
+### Explore
 
-###### Each Feature Individually
+1) Univariate Analysis
 
-###### Pairs of Variables
+2) Bivariate Analysis
 
-###### Multiple Variables
+3) Multivariate Analysis
 
-###### Questions to Answer
+#### Develop exploratory questions
 
-1)  Does the students class status (Freshman, Sophmore,etc..) vs the years since a student started affect retention?
+- Does the students class status (Freshman, Sophmore,etc..) vs the years since a student started affect retention?
 
-2)  Does whether a student was enrolled between the retention semester affect retention?
+- Does whether a student was enrolled between the retention semester affect retention?
 
-3) Does a students term gpa affect retention?
+- Does a students term gpa affect retention?
 
-4) Does whether a student withdraw from a course affect retention?
+- Does whether a student withdraw from a course affect retention?
 
-5) Does a students full time or part time status affect retention?
+- Does a students full time or part time status affect retention?
 
-###### Explore through visualizations
+#### Explore through visualizations and statistical testing
 
 1) Create visualizations exploring each question
 
-###### Statistics tests
+2) Run statistics test relevant to each question
 
-1) Run statistics test relevant to each question
-
-###### Explore through Clustering
+#### Explore through Clustering
 
 1) Test clusters as features, visualizations and possible samples for modeling.
 
-###### Summary 
+#### Summary 
 
-1) Create a summary that answers exploritory questions
+1) Create a summary that answers exploratory questions
 
 #### Perform necessary feature engineering, and dimensionality reduction.
 
