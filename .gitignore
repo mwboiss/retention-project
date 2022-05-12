@@ -4,3 +4,4 @@ env.py
 __pychache__/
 *.csv
 *.xlsx
+feedback.ipynb
